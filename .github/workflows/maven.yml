@@ -1,14 +1,12 @@
 name: Build and Test with Maven
 
-
 on:
   workflow_dispatch:
-   
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -17,6 +15,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '8'
+        distribution: 'temurin'  # Aqui está a correção, adicionando a distribuição
 
     - name: Cache Maven dependencies
       uses: actions/cache@v2
@@ -31,7 +30,7 @@ jobs:
 
     - name: Upload test reports
       if: always()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: test-reports
         path: target/surefire-reports
