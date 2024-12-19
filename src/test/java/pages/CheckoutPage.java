@@ -26,10 +26,9 @@ public class CheckoutPage {
     private By nameTextFinish = By.cssSelector("[data-test='inventory-item-name']");
     private By successMessageText = By.cssSelector("[data-test='complete-header']");
 
-    // Construtor que recebe WebDriver e DriverFactory
     public CheckoutPage(WebDriver driver, DriverFactory driverFactory) {
         this.driver = driver;
-        this.driverFactory = driverFactory; // Inicializando corretamente o driverFactory
+        this.driverFactory = driverFactory;
     }
 
     // Métodos para interagir com os elementos
