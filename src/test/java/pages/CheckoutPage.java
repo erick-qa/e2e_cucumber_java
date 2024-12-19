@@ -6,25 +6,25 @@ import utils.DriverFactory;
 
 public class CheckoutPage {
 
-    private WebDriver driver;
-    private DriverFactory driverFactory;
+    private final WebDriver driver;
+    private final DriverFactory driverFactory;
 
     // Elementos da página de registro
-    private By userNameField = By.name("user-name");
-    private By passwordField = By.name("password");
-    private By loginButton = By.name("login-button");
-    private By addToCartButton = By.name("add-to-cart-sauce-labs-backpack");
-    private By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
-    private By nameText = By.cssSelector("[data-test='inventory-item-name']");
-    private By nameTextCart = By.cssSelector("[data-test='inventory-item-name']");
-    private By checkoutButton = By.cssSelector("[data-test='checkout']");
-    private By firstNameField = By.cssSelector("[data-test='firstName']");
-    private By lastNameField = By.cssSelector("[data-test='lastName']");
-    private By zipField = By.cssSelector("[data-test='postalCode']");
-    private By continueButton = By.cssSelector("[data-test='continue']");
-    private By finishButton = By.cssSelector("[data-test='finish']");
-    private By nameTextFinish = By.cssSelector("[data-test='inventory-item-name']");
-    private By successMessageText = By.cssSelector("[data-test='complete-header']");
+    private final By userNameField = By.name("user-name");
+    private final By passwordField = By.name("password");
+    private final By loginButton = By.name("login-button");
+    private final By addToCartButton = By.name("add-to-cart-sauce-labs-backpack");
+    private final By cartButton = By.cssSelector("[data-test='shopping-cart-link']");
+    private final By nameText = By.cssSelector("[data-test='inventory-item-name']");
+    private final By nameTextCart = By.cssSelector("[data-test='inventory-item-name']");
+    private final By checkoutButton = By.cssSelector("[data-test='checkout']");
+    private final By firstNameField = By.cssSelector("[data-test='firstName']");
+    private final By lastNameField = By.cssSelector("[data-test='lastName']");
+    private final By zipField = By.cssSelector("[data-test='postalCode']");
+    private final By continueButton = By.cssSelector("[data-test='continue']");
+    private final By finishButton = By.cssSelector("[data-test='finish']");
+    private final By nameTextFinish = By.cssSelector("[data-test='inventory-item-name']");
+    private final By successMessageText = By.cssSelector("[data-test='complete-header']");
 
     public CheckoutPage(WebDriver driver, DriverFactory driverFactory) {
         this.driver = driver;
