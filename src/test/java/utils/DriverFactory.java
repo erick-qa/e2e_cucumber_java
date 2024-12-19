@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
     private WebDriver driver;
@@ -44,10 +45,11 @@ public class DriverFactory {
         }
     }
 
-    // Método para instanciar e configurar o navegador antes do teste
     public void initializeDriver(String browser) {
         getDriver(browser);  // Apenas chama getDriver uma vez
-        driver.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS);
+
+        // Não é mais necessário usar implicitlyWait()
+        // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     // Método para destacar a borda do elemento com verde
@@ -254,5 +256,81 @@ public class DriverFactory {
         } catch (Exception e) {
             Assert.fail("O elemento não foi encontrado ou não está visível na tela: " + e.getMessage());
         }
+    }
+
+    // Método para capturar o texto de um elemento
+    public String getElementText(By elementLocator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+
+        try {
+            // Espera até que o elemento seja visível
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+
+            // Obtém o texto do elemento
+            String elementText = element.getText();
+
+            // Aplica a borda verde
+            highlightElementBorderInGreen(element);
+
+            // Retorna o texto do elemento
+            return elementText;
+        } catch (Exception e) {
+            Assert.fail("Erro ao capturar o texto do elemento: " + e.getMessage());
+            return null; // Retorna null se o elemento não for encontrado ou houver algum erro
+        }
+    }
+
+    // Método para validar se os textos dos dois elementos são iguais
+    public void validateTextMatch(String firstCapturedText, By secondElementLocator, int timeoutInSeconds) {
+        // Espera até que o segundo elemento esteja visível e captura o texto
+        String secondCapturedText = getElementText(secondElementLocator, timeoutInSeconds);
+
+        // Comparando os textos
+        if (firstCapturedText != null && secondCapturedText != null && firstCapturedText.equals(secondCapturedText)) {
+            System.out.println("Os textos correspondem. Teste passou.");
+
+        } else {
+            // Se os textos não corresponderem, falha o teste
+            System.out.println("Os textos não correspondem. Teste falhou.");
+            System.out.println("Texto do primeiro elemento: " + firstCapturedText);
+            System.out.println("Texto do segundo elemento: " + secondCapturedText);
+
+            // Destaca as bordas de verde nos dois elementos
+            WebElement secondElement = driver.findElement(secondElementLocator);
+            highlightElementBorderInGreen(secondElement);
+
+            // Falha o teste
+            throw new AssertionError("Os textos dos elementos não correspondem.");
+        }
+    }
+
+    // Método para validar se um elemento contém o texto esperado e pintar a borda de verde
+    public void validateElementContainsText(By elementLocator, String expectedText, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        try {
+            // Espera até que o elemento esteja visível
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+
+            // Captura o texto do elemento
+            String elementText = element.getText();
+
+            // Verifica se o texto do elemento contém o texto esperado
+            if (elementText.contains(expectedText)) {
+                // Aplica a borda verde no elemento
+                highlightElementBorderInGreen(element);
+                System.out.println("O texto foi encontrado no elemento: " + elementText);
+            } else {
+                // Falha o teste caso o texto não seja encontrado
+                Assert.fail("O texto esperado não foi encontrado no elemento. Texto encontrado: " + elementText);
+            }
+        } catch (Exception e) {
+            // Se ocorrer um erro, falha o teste e imprime a mensagem
+            Assert.fail("Erro ao verificar o texto no elemento: " + e.getMessage());
+        }
+    }
+
+    public WebElement waitForElementToBeVisible(By locator, int timeoutInSeconds) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }
