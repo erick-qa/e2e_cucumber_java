@@ -2,11 +2,8 @@ name: Build and Test with Maven
 
 
 on:
-  pull_request:
-    branches:
-      - master
-    paths:
-      - '**/*.java'
+  workflow_dispatch:
+   
 
 jobs:
   build:
