@@ -24,9 +24,16 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+          ${{ runner.os }}-
 
     - name: Build and Test with Maven
       run: mvn clean test
+      env:
+        MAVEN_OPTS: "-Xmx1024m"
+
+    - name: Display test reports (if tests fail)
+      if: failure()
+      run: cat target/surefire-reports/*.txt || echo "No test report found."
 
     - name: Upload test reports
       if: always()
