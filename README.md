@@ -19,7 +19,7 @@ Com o uso de Cucumber, é possível descrever os cenários de teste em linguagem
 
 ## 📁 Estrutura do Projeto
 
-```bash
+```
 e2e_cucumber_java/
 ├── features/     # Arquivos .feature com os cenários de teste
 ├── steps/        # Definições dos passos (Step Definitions)
@@ -27,15 +27,18 @@ e2e_cucumber_java/
 ├── runners/      # Classes responsáveis por rodar os testes
 ├── utils/        # Utilitários e classes auxiliares
 └── pom.xml       # Gerenciador de dependências (Maven)
+```
 
 ## ▶️ Como Executar os Testes
 ```Clone o repositório
 git clone https://github.com/erick-qa/e2e_cucumber_java.git
 cd e2e_cucumber_java
+```
 
 ## Compile o projeto
 ```mvn clean compile
+```
 
-`##Execute os testes
-```bash
-mvn test
+## Execute os testes
+```mvn test
+```
