@@ -33,7 +33,6 @@ e2e_cucumber_java/
 ```
 Clone o repositório
 git clone https://github.com/erick-qa/e2e_cucumber_java.git
-cd e2e_cucumber_java
 ```
 
 ## Compile o projeto
