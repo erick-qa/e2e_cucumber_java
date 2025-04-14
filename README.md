@@ -1,52 +1,42 @@
-E2E Cucumber Java
+# E2E Cucumber Java
+
 Este projeto tem como objetivo automatizar testes de ponta a ponta (E2E) utilizando a linguagem Java em conjunto com o framework Cucumber, seguindo a abordagem de BDD (Behavior-Driven Development).
 
-🧪 Sobre o Projeto
-O repositório e2e_cucumber_java contém uma estrutura de automação de testes que permite escrever testes legíveis por humanos, integrando as etapas de testes com funcionalidades reais da aplicação. Com o uso de Cucumber, é possível descrever os cenários de teste em linguagem natural (Gherkin), facilitando a comunicação entre equipe técnica e não técnica.
+## 🧪 Sobre o Projeto
 
-🔧 Tecnologias Utilizadas
-Java 17+
+O repositório **e2e_cucumber_java** contém uma estrutura de automação de testes que permite escrever testes legíveis por humanos, integrando as etapas de testes com funcionalidades reais da aplicação.  
+Com o uso de Cucumber, é possível descrever os cenários de teste em linguagem natural (Gherkin), facilitando a comunicação entre equipe técnica e não técnica.
 
-Cucumber
+## 🔧 Tecnologias Utilizadas
 
-JUnit
+- Java 17+
+- Cucumber
+- JUnit
+- Selenium WebDriver
+- Maven
+- Gherkin
+- Page Object Model (POM)
 
-Selenium WebDriver
+## 📁 Estrutura do Projeto
 
-Maven
-
-Gherkin
-
-Page Object Model (POM)
-
-📁 Estrutura do Projeto
-bash
-Copiar
-Editar
+```bash
 e2e_cucumber_java/
-├── features/             # Arquivos .feature com os cenários de teste
-├── steps/                # Definições dos passos (Step Definitions)
-├── pages/                # Classes das páginas seguindo o padrão POM
-├── runners/              # Classes responsáveis por rodar os testes
-├── utils/                # Utilitários e classes auxiliares
-└── pom.xml               # Gerenciador de dependências (Maven)
+├── features/     # Arquivos .feature com os cenários de teste
+├── steps/        # Definições dos passos (Step Definitions)
+├── pages/        # Classes das páginas seguindo o padrão POM
+├── runners/      # Classes responsáveis por rodar os testes
+├── utils/        # Utilitários e classes auxiliares
+└── pom.xml       # Gerenciador de dependências (Maven)
+
 ▶️ Como Executar os Testes
 Clone o repositório
-
-bash
-Copiar
-Editar
 git clone https://github.com/erick-qa/e2e_cucumber_java.git
 cd e2e_cucumber_java
+
 Compile o projeto
-
-bash
-Copiar
-Editar
 mvn clean compile
-Execute os testes
 
+Execute os testes
 bash
-Copiar
-Editar
+
 mvn test
