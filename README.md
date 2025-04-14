@@ -30,15 +30,18 @@ e2e_cucumber_java/
 ```
 
 ## ▶️ Como Executar os Testes
-```Clone o repositório
+```
+Clone o repositório
 git clone https://github.com/erick-qa/e2e_cucumber_java.git
 cd e2e_cucumber_java
 ```
 
 ## Compile o projeto
-```mvn clean compile
+```
+mvn clean compile
 ```
 
 ## Execute os testes
-```mvn test
+```
+mvn test
 ```
