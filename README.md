@@ -28,15 +28,14 @@ e2e_cucumber_java/
 ├── utils/        # Utilitários e classes auxiliares
 └── pom.xml       # Gerenciador de dependências (Maven)
 
-▶️ Como Executar os Testes
-Clone o repositório
+## ▶️ Como Executar os Testes
+```Clone o repositório
 git clone https://github.com/erick-qa/e2e_cucumber_java.git
 cd e2e_cucumber_java
 
-Compile o projeto
-mvn clean compile
+## Compile o projeto
+```mvn clean compile
 
-Execute os testes
-bash
-
+`##Execute os testes
+```bash
 mvn test
